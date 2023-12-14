@@ -1,0 +1,23 @@
+.input-error {
+    border: 1px solid #ff0000;
+}
+
+.photos {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.photo {
+    cursor: pointer;
+    position: relative;
+}
+
+.delete_image {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 55;
+}
