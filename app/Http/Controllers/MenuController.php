@@ -93,12 +93,16 @@ class MenuController extends Controller
 
     public function update(Request $request, $dt, $id, $lang = null)
     {
-        $current_id = $request->input('parent_id');
+
+        $current_id = $request->input('id');
+
+        $lang = $request->input('lang');
 
         if (isset($lang)) {
-//            dd($lang);
+
+
             $menu_table = "menus" . $lang;
-            $menuItem = DB::select("SELECT id FROM `$menu_table` WHERE id  = '$id' ");
+            $menuItem = DB::select("SELECT id FROM `$menu_table` WHERE id  = '$current_id' ");
 
             if ($menuItem) {
 
@@ -116,15 +120,17 @@ class MenuController extends Controller
                         $level = $findParrentLavel + 1;
                     }
                 }
-
-                $title = $request->input('title');
+                $input_title = $request->input('title');
+                $input_title = addslashes($input_title);
+                $title = $input_title;
                 $parent_id = $request->input('parent_id');
                 $link = $request->input('link');
                 $index = $request->input('index');
                 $level = $level;
                 $updated_at = Carbon::now();
 
-                DB::update("UPDATE `$menu_table` SET `title` = '$title', `parent_id` = '$parent_id', `link` = '$link', `index` = '$index', `level` = '$level', `updated_at` = '$updated_at' WHERE `$menu_table`.`id` = $id");
+                $update_query = DB::update("UPDATE `$menu_table` SET `title` = '$title', `parent_id` = '$parent_id', `link` = '$link', `index` = '$index', `level` = '$level', `updated_at` = '$updated_at' WHERE `$menu_table`.`id` = $current_id");
+
 
                 return redirect()->back()->with('success', 'Меню успешно изменен');
 
@@ -134,10 +140,12 @@ class MenuController extends Controller
 
 
         } else {
-            $menuItem = Menu::find($id);
+            $current_id = $request->input('id');
 
             $findParrentLavel = DB::table('menus')
                 ->where('id', $current_id)->value('level');
+
+
             if ($findParrentLavel === null) {
                 $level = 0;
             } else if ($findParrentLavel == 0) {
@@ -149,8 +157,8 @@ class MenuController extends Controller
                     $level = $findParrentLavel + 1;
                 }
             }
-            DB::table('menus')
-                ->where('id', $id)
+            $update_query = DB::table('menus')
+                ->where('id', $current_id)
                 ->update([
                     'title' => $request->input('title'),
                     'parent_id' => $request->input('parent_id'),
@@ -159,6 +167,7 @@ class MenuController extends Controller
                     'level' => $level,
                     'updated_at' => Carbon::now()
                 ]);
+
             return redirect()->route('add-menu')->with('success', 'Меню успешно изменен');
         }
 
