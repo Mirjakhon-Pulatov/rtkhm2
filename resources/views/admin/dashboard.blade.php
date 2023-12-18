@@ -219,7 +219,7 @@
                     {
                         title: {
                             formatter: function (e) {
-                                return e + " (mins)";
+                                return e + " ";
                             },
                         },
                     },
