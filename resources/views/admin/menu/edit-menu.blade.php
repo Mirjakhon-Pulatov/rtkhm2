@@ -32,6 +32,11 @@
                                       method="POST"> @endif
 
                                     @csrf
+
+                                    <input type="hidden" name="id" value="{{$ms->id}}">
+                                    @if(isset($CurrentLang))
+                                        <input type="hidden" name="lang" value="{{ $CurrentLang }}">
+                                    @endif
                                     <div class="mb-3">
                                         <label class="form-label">Загаловок</label>
                                         <input name="title" type="text" required value="{{ $ms->title  }}"
