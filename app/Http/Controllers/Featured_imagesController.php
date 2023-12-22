@@ -65,10 +65,13 @@ class Featured_imagesController extends Controller
      public function getImage($table, $code)
     {
         $getImageId = DB::select("SELECT image_id FROM `featured_images` where dt = '$table' and article = '$code' ");
-        $getImageId =  $getImageId[0]->image_id;
-
-        $getImage = DB::select("Select file from gallerys where id = '$getImageId' ");
-        return $getImage = $getImage[0]->file;
+        if ($getImageId) {
+            $getImageId = $getImageId[0]->image_id;
+            $getImage = DB::select("Select file from gallerys where id = '$getImageId' ");
+            return $getImage = $getImage[0]->file;
+        } else {
+            return '';
+        }
     }
     
 }
