@@ -71,15 +71,13 @@ if ($position !== false) {
                                                      for ($i = 1; $i <= $menu->level; $i++) {
                                                     $spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
                                                     }
-                                                     if ($menu->id = $value){
+                                                     if ($menu->id == $value){
                                                          echo "<option selected value='$menu->id'>$spaces$menu->title</option>";
+                                                     }else{
+                                                         echo "<option value='$menu->id'>$spaces$menu->title</option>";
                                                      }
-
-
                                                 }
-
                                             @endphp
-
                                         </select>
                                     </div>
                                 @else
