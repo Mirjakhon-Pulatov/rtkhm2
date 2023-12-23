@@ -135,7 +135,7 @@ if ($position !== false) {
 
                                     <div class="mb-4">
                                         <label class="form-label">{{ $feilds->label }}</label>
-                                        <input type="number" name="{{ $feilds->name }}"
+                                        <input type="number" value="{{ $value }}" name="{{ $feilds->name }}"
                                                class="form-control" required>
                                     </div>
 
