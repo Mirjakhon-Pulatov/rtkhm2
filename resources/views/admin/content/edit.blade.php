@@ -148,7 +148,7 @@ if ($position !== false) {
                                                class="col-md-2 col-form-label">{{ $feilds->label }}</label>
 
                                         <input class="form-control" name="{{ $feilds->name }}" type="datetime-local"
-                                               value="{{ \Carbon\Carbon::now()->format('Y-m-d H:i:s') }}"
+                                               value="{{ $value }}"
                                                id="{{ $feilds->label }}">
 
                                     </div>
@@ -161,7 +161,7 @@ if ($position !== false) {
                                                class="col-md-2 col-form-label">{{ $feilds->label }}</label>
 
                                         <input class="form-control" name="{{ $feilds->name }}" type="date"
-                                               value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
+                                               value="{{ $value }}"
                                                id="{{ $feilds->label }}">
 
                                     </div>
