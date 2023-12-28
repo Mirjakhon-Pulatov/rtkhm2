@@ -32,7 +32,7 @@ if (file_exists($maintenance = __DIR__ . '/../storage/framework/maintenance.php'
 */
 
 require __DIR__ . '/../vendor/autoload.php';
-if($_SERVER['REQUEST_URI'] == "/index.php"  $_SERVER['REQUEST_URI'] == "/site"  $_SERVER['REQUEST_URI'] == "/site/index") {
+if($_SERVER['REQUEST_URI'] == "/index.php" || $_SERVER['REQUEST_URI'] == "/site" || $_SERVER['REQUEST_URI'] == "/site/index") {
 header("Location: /",TRUE,301);
 exit();
 }
