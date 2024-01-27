@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 col-xl-6">
                 <div>
-                    <img src="{{ asset('assets/admin/images/error-img.png') }}" alt="" class="img-fluid">
+                    <img src="{{ asset('public/assets/admin/images/error-img.png') }}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>

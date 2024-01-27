@@ -1,4 +1,4 @@
-<script src="{{ asset('tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('public/tinymce/tinymce.min.js') }}"></script>
 <script>const useDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches,
         example_image_upload_handler = (e, a) => new Promise((o, t) => {
             let i = new XMLHttpRequest;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Featured_imagesController extends Controller
 {
@@ -61,7 +62,7 @@ class Featured_imagesController extends Controller
     {
         //
     }
-    
+
      public function getImage($table, $code)
     {
         $getImageId = DB::select("SELECT image_id FROM `featured_images` where dt = '$table' and article = '$code' ");
@@ -73,5 +74,5 @@ class Featured_imagesController extends Controller
             return '';
         }
     }
-    
+
 }

@@ -1,12 +1,12 @@
-@foreach($findContentTYpe as $content) @endforeach
+@foreach ($findContentTYpe as $content)
+@endforeach
 @extends('admin.layout.layout')
 @section('header-links')
-
 @endsection
 
 @section('content')
     @php
-        $codeArticle = uniqid() . "____". \Illuminate\Support\Carbon::now();
+        $codeArticle = uniqid() . '____' . \Illuminate\Support\Carbon::now();
     @endphp
 
     <div class="row">
@@ -14,33 +14,29 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title mb-3">Добавить {{ $content->name }}</h2>
-                    <form action="{{ route('content-add', $content->dt ) }}" class="mt-4" method="POST">
-                        <input id="code" type="hidden" name="code"
-                               value="{{ $codeArticle }}">
+                    <form action="{{ route('content-add', $content->dt) }}" class="mt-4" method="POST">
+                        <input id="code" type="hidden" name="code" value="{{ $codeArticle }}">
 
-                        <input type="hidden" name="visited"
-                               value="0">
+                        <input type="hidden" name="visited" value="0">
 
 
                         @csrf
-                        @foreach($findFeilds as $feilds)
-                            @if($feilds->is_slug == 1)
+                        @foreach ($findFeilds as $feilds)
+                            @if ($feilds->is_slug == 1)
                                 <input type="hidden" name="slug" id="slug_hidden">
                             @endif
 
-                            @if(strpos($feilds->type, 'dt_') !== false )
-
-                                @if($feilds->type == "dt_menus")
-
+                            @if (strpos($feilds->type, 'dt_') !== false)
+                                @if ($feilds->type == 'dt_menus')
                                     <div class="mb-4">
                                         <label for="menu" class="form-label">Меню</label>
                                         <select id="menu" name="{{ $feilds->name }}" class="form-select">
                                             @php
-                                                $menus =  \Illuminate\Support\Facades\DB::select("select * from menus order by level ");
-                                                foreach ($menus as $menu){
-                                                    $spaces = "";
-                                                     for ($i = 1; $i <= $menu->level; $i++) {
-                                                    $spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                                                $menus = \Illuminate\Support\Facades\DB::select('select * from menus order by level ');
+                                                foreach ($menus as $menu) {
+                                                    $spaces = '';
+                                                    for ($i = 1; $i <= $menu->level; $i++) {
+                                                        $spaces .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                                                     }
                                                     echo "<option value='$menu->id'>$spaces$menu->title</option>";
                                                 }
@@ -51,90 +47,72 @@
                                     </div>
                                 @else
                                     <div class="mb-4">
-                                        <label for="{{ $feilds->label }}"
-                                               class="form-label">{{ $feilds->label }}</label>
-                                        <select id="{{ $feilds->label }}" name="{{ $feilds->name }}"
-                                                class="form-select">
+                                        <label for="{{ $feilds->label }}" class="form-label">{{ $feilds->label }}</label>
+                                        <select id="{{ $feilds->label }}" name="{{ $feilds->name }}" class="form-select">
                                             @php
 
-                                                $table = str_replace("dt_", "", $feilds->type);
-                                              $categoryctye =  \Illuminate\Support\Facades\DB::select("select * from $table ");
-                                              foreach ($categoryctye as $cat){
-
-                                                 echo "<option value='$cat->id'>$cat->title</option>";
-                                              }
+                                                $table = str_replace('dt_', '', $feilds->type);
+                                                $categoryctye = \Illuminate\Support\Facades\DB::select("select * from $table ");
+                                                foreach ($categoryctye as $cat) {
+                                                    echo "<option value='$cat->id'>$cat->title</option>";
+                                                }
 
                                             @endphp
 
                                         </select>
                                     </div>
                                 @endif
-
                             @endif
 
                             @switch($feilds->type)
                                 @case('varchar')
                                 @case('text')
-
-                                    @if($feilds->max < 500)
+                                    @if ($feilds->max < 500)
                                         <div class="mb-4">
                                             <label class="form-label">{{ $feilds->label }}</label>
                                             <input name="{{ $feilds->name }}" type="text"
-                                                   @if($feilds->is_slug == 1 ) id="slug_title"
-                                                   @endif  name="{{ $feilds->name }}"
-                                                   class="form-control" required>
+                                                @if ($feilds->is_slug == 1) id="slug_title" @endif name="{{ $feilds->name }}"
+                                                class="form-control" required>
                                         </div>
                                     @else
                                         <div class="mb-4">
                                             <label class="form-label">{{ $feilds->label }}</label>
-                                            <textarea name="{{ $feilds->name }}"
-                                                      class="tinymce form-control"></textarea>
+                                            <textarea name="{{ $feilds->name }}" class="tinymce form-control"></textarea>
                                         </div>
                                     @endif
-                                    @break
+                                @break
 
                                 @case('int')
-
                                     <div class="mb-4">
                                         <label class="form-label">{{ $feilds->label }}</label>
-                                        <input type="number" name="{{ $feilds->name }}"
-                                               class="form-control" required>
+                                        <input type="number" name="{{ $feilds->name }}" class="form-control" required>
                                     </div>
-
-                                    @break
+                                @break
 
                                 @case('DATETIME')
-
                                     <div class="mb-4">
                                         <label for="{{ $feilds->label }}"
-                                               class="col-md-2 col-form-label">{{ $feilds->label }}</label>
+                                            class="col-md-2 col-form-label">{{ $feilds->label }}</label>
 
                                         <input class="form-control" name="{{ $feilds->name }}" type="datetime-local"
-                                               value="{{ \Carbon\Carbon::now()->format('Y-m-d H:i:s') }}"
-                                               id="{{ $feilds->label }}">
+                                            value="{{ \Carbon\Carbon::now()->format('Y-m-d H:i:s') }}" id="{{ $feilds->label }}">
 
                                     </div>
-
-                                    @break
+                                @break
 
                                 @case('DATE')
-
                                     <div class="mb-4">
                                         <label for="{{ $feilds->label }}"
-                                               class="col-md-2 col-form-label">{{ $feilds->label }}</label>
+                                            class="col-md-2 col-form-label">{{ $feilds->label }}</label>
 
                                         <input class="form-control" name="{{ $feilds->name }}" type="date"
-                                               value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
-                                               id="{{ $feilds->label }}">
+                                            value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" id="{{ $feilds->label }}">
 
                                     </div>
-
-                                    @break
+                                @break
 
                                 @default
-
                             @endswitch
-
                         @endforeach
 
 
@@ -150,9 +128,8 @@
         <div class="col-3">
             <div class="row">
 
-                @foreach($findFeilds as $feilds)
-
-                    @if($feilds->is_slug == "1")
+                @foreach ($findFeilds as $feilds)
+                    @if ($feilds->is_slug == '1')
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body">
@@ -171,7 +148,6 @@
                             </div>
                         </div>
                     @endif
-
                 @endforeach
 
                 <div class="col-md-12">
@@ -195,8 +171,8 @@
 
 
     <!-- EDIT MENU MODAL -->
-    <div class="modal fade" id="Gallerry" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="Gallerry" aria-hidden="true">
+    <div class="modal fade" id="Gallerry" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog"
+        aria-labelledby="Gallerry" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body" style="min-height: 600px;">
@@ -213,10 +189,10 @@
                         <div class="col-md-3">
                             <div class="albums">
                                 @php
-                                    $albums = DB::select("SELECT * FROM `albums` ");
+                                    $albums = DB::select('SELECT * FROM `albums` ');
                                 @endphp
 
-                                @foreach($albums as $album)
+                                @foreach ($albums as $album)
                                     @php
                                         $id_album = $album->id;
                                         $results = DB::select("SELECT * FROM gallerys WHERE album_id = $id_album ");
@@ -225,8 +201,9 @@
 
                                     <div class="album-item" onclick="loadModalGallery({{ $album->id }})">
                                         <img width="50%" height="auto"
-                                             src="{{ asset('assets/admin/images/folder.png') }}">
-                                        <p class="w-100 text-center card-title">{{ $album->title }} ({{ $count }})</p>
+                                            src="{{ asset('public/assets/admin/images/folder.png') }}">
+                                        <p class="w-100 text-center card-title">{{ $album->title }} ({{ $count }})
+                                        </p>
                                     </div>
                                 @endforeach
 
@@ -255,7 +232,6 @@
 
 
     <style>
-
         .modal-body {
             min-height: 530px !important;
             max-height: 530px !important;
@@ -328,19 +304,18 @@
             justify-content: center;
             align-items: center;
         }
-
     </style>
     @include('admin.blocks.tinymce')
 @endsection
 
 @section('footer-links')
-    <script src="{{ asset('assets\admin\libs\custom\translate.js') }}"></script>
+    <script src="{{ asset('public\assets\admin\libs\custom\translate.js') }}"></script>
 
     <script>
         const Gallerry = new bootstrap.Modal(document.getElementById('Gallerry'));
 
 
-        $("#close_modal").on("click", function () {
+        $("#close_modal").on("click", function() {
             Gallerry.hide();
         });
 
@@ -357,11 +332,11 @@
                     'dt': '{{ $content->dt }}'
                 },
                 dataType: "json",
-                success: function (e) {
+                success: function(e) {
 
                     ShowError(e);
                 },
-                error: function (e) {
+                error: function(e) {
 
                     noConnet(xhr, status, error);
                     alert('Ошибка при получении фотографий галереи:', error);
@@ -372,7 +347,9 @@
             if ($('.photo').is(':empty')) {
                 // alert('asdasd');
                 // Вставка HTML, если div пустой
-                $('.photo').html('<img class="img-article"  width="100%" height="auto" src="' + src + '" /> <button onclick="DeleteImageCurent()" class="delete_image btn btn-sm btn-danger" type="button"><i class="bx bx-trash"></i></button> ');
+                $('.photo').html('<img class="img-article"  width="100%" height="auto" src="' + src +
+                    '" /> <button onclick="DeleteImageCurent()" class="delete_image btn btn-sm btn-danger" type="button"><i class="bx bx-trash"></i></button> '
+                    );
             } else {
                 $('.img-article').attr('src', src);
             }
@@ -392,11 +369,11 @@
 
                 },
                 dataType: "json",
-                success: function (e) {
+                success: function(e) {
                     $(".photo").empty();
                     ShowError(e);
                 },
-                error: function (e) {
+                error: function(e) {
 
                     noConnet(xhr, status, error);
                     alert('Ошибка при получении фотографий галереи:', error);
@@ -406,7 +383,7 @@
         }
 
 
-        $(".album-item").click(function () {
+        $(".album-item").click(function() {
 
             var paragraphValue = $(this).find("p").text();
             $("#title_folder").html(paragraphValue);
@@ -427,13 +404,15 @@
             $.ajax({
                 url: '{{ route('OpenFolder') }}',
                 method: 'GET',
-                data: {gallery_id: id},
-                success: function (response) {
+                data: {
+                    gallery_id: id
+                },
+                success: function(response) {
                     $(".folder_loader").hide();
                     // Обновите содержимое вашей страницы с полученным HTML-кодом
                     $('#images-list').html(response);
                 },
-                error: function (error) {
+                error: function(error) {
                     $(".folder_loader").hide();
                     alert('Ошибка при получении фотографий галереи:', error);
                 }
@@ -444,7 +423,7 @@
 
 
         // var inputValue = $("#slug_title").val();
-        $("#slug_title").on("input", function () {
+        $("#slug_title").on("input", function() {
             const inputValue = $(this).val();
             const slug = generateSlug(inputValue);
             $("#slug_visible").val(slug);
@@ -473,7 +452,5 @@
                 .replace(/[\s_-]+/g, '-')
                 .replace(/^-+|-+$/g, '');
         }
-
     </script>
 @endsection
-

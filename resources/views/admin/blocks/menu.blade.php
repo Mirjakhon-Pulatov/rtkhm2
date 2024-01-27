@@ -90,16 +90,6 @@
 
                 </li>
 
-                @can('view-menu')
-                    <!-- Показать меню для администратора -->
-                    <li>
-                        <a href="{{ route('backups') }}" class="waves-effect">
-                            <i class="bx bxs-data fa-4x"></i>
-                            <span key="t-messages">Резервы базы данных</span>
-                        </a>
-                    </li>
-                @endcan
-
 
             </ul>
         </div>

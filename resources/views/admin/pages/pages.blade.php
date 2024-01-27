@@ -1,14 +1,13 @@
 @extends('admin.layout.layout')
 @section('header-links')
     <!-- DataTables -->
-    <link href="{{ asset('assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
-          rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
+        rel="stylesheet" type="text/css" />
     <!-- Responsive Table css -->
-    <link href="{{ asset('assets/admin/libs/admin-resources/rwd-table/rwd-table.min.css') }}" rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('public/assets/admin/libs/admin-resources/rwd-table/rwd-table.min.css') }}" rel="stylesheet"
+        type="text/css" />
 @endsection
 @section('page-name')
     Добавить Страницы
@@ -26,25 +25,25 @@
                     </div>
                     <table id="files-table" class="table table-bordered table-responsive">
                         <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Родитель</th>
-                            <th>Загаловок</th>
-                            <th>Просмотры</th>
-                            <th>Действие</th>
-                        </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Родитель</th>
+                                <th>Загаловок</th>
+                                <th>Просмотры</th>
+                                <th>Действие</th>
+                            </tr>
                         </thead>
                         <tbody>
 
-                        @foreach ($pages as $page)
-                            <tr>
-                                <td>{{ $page->id  }}</td>
-                                <td>{{ $page->menu ? $page->menu->title : '-'  }}</td>
-                                <td>{{ $page->title  }}</td>
-                                <td>{{ $page->seen  }}</td>
-                                <td>1</td>
-                            </tr>
-                        @endforeach
+                            @foreach ($pages as $page)
+                                <tr>
+                                    <td>{{ $page->id }}</td>
+                                    <td>{{ $page->menu ? $page->menu->title : '-' }}</td>
+                                    <td>{{ $page->title }}</td>
+                                    <td>{{ $page->seen }}</td>
+                                    <td>1</td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
@@ -57,7 +56,7 @@
 
     <!-- EDIT MENU MODAL -->
     <div class="modal fade" id="DELETE_MODAL" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="DELETE_MODAL" aria-hidden="true">
+        role="dialog" aria-labelledby="DELETE_MODAL" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -81,27 +80,27 @@
                 </div>
             </div>
         </div>
-        @endsection
+    @endsection
 
-        @section('footer-links')
-            <!-- Required datatable js -->
-            <script src="{{ asset('assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-            <script src="{{ asset('assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-            <script>
-                $(document).ready(function () {
-                    $('#files-table').DataTable();
-                });
+    @section('footer-links')
+        <!-- Required datatable js -->
+        <script src="{{ asset('public/assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('public/assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+        <script>
+            $(document).ready(function() {
+                $('#files-table').DataTable();
+            });
 
-                function OpenModalEdit() {
-                    $('#Edit_menu').modal('show');
-                }
+            function OpenModalEdit() {
+                $('#Edit_menu').modal('show');
+            }
 
-                function OpenModalDelete(MenuID, MenuTitle) {
+            function OpenModalDelete(MenuID, MenuTitle) {
 
-                    $('#DELETE_MODAL').modal('show');
-                    $('#menu_name').text(MenuTitle);
-                    $("#delete_id").val(MenuID);
+                $('#DELETE_MODAL').modal('show');
+                $('#menu_name').text(MenuTitle);
+                $("#delete_id").val(MenuID);
 
-                }
-            </script>
-@endsection
+            }
+        </script>
+    @endsection

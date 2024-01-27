@@ -15,7 +15,9 @@ use App\Http\Controllers\ExtraImagesController;
 use App\Models\Visitor;
 use App\Http\Middleware\LogVisitorMiddleware;
 
+
 Route::middleware('LogVisitorMiddleware')->group(function () {
+
 
     Route::get('/', function () {
         return view('admin.mainpage');
@@ -25,13 +27,10 @@ Route::middleware('LogVisitorMiddleware')->group(function () {
 });
 
 
-
-
 Route::get('/admin/login', function () {
     return view('admin.login');
 })->name('login');
 Route::post('/login/ajax', [AuthController::class, 'ajaxLogin'])->name('login.ajax');
-
 
 
 // admin panel start

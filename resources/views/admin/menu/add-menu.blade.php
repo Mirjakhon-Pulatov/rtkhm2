@@ -1,19 +1,18 @@
 @extends('admin.layout.layout')
 @section('header-links')
     <!-- DataTables -->
-    <link href="{{ asset('assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
-          rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
+        rel="stylesheet" type="text/css" />
     <!-- Responsive Table css -->
-    <link href="{{ asset('assets/admin/libs/admin-resources/rwd-table/rwd-table.min.css') }}" rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('public/assets/admin/libs/admin-resources/rwd-table/rwd-table.min.css') }}" rel="stylesheet"
+        type="text/css" />
 @endsection
 @section('page-name')
     <h4 class="mb-sm-0 font-size-18">Добавить меню</h4>
     <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop">
+        data-bs-target="#staticBackdrop">
         Добавить +
     </button>
 @endsection
@@ -26,41 +25,41 @@
 
                     <table id="files-table" class="table table-bordered table-responsive">
                         <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Загаловок</th>
-                            <th>Родитель</th>
-                            <th>Ссылка</th>
-                            <th>Индекс</th>
-                            <th>Действие</th>
-                        </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Загаловок</th>
+                                <th>Родитель</th>
+                                <th>Ссылка</th>
+                                <th>Индекс</th>
+                                <th>Действие</th>
+                            </tr>
                         </thead>
 
 
                         <tbody>
-                        @foreach ($menus as $menu)
-                            <tr>
-                                <td>{{ $menu->id }}</td>
-                                <td>{{ $menu->title }}</td>
-                                @if ($menu->parent)
-                                    <td>{{ $menu->parent->title }}</td>
-                                @else
-                                    <td>Нет родителя</td>
-                                @endif
-                                <td>{{ $menu->link }}</td>
-                                <td>{{ $menu->index }}</td>
-                                <td>
-                                    <a href="{{ route('pageUpdate', $menu->id)  }}"
-                                       class="btn btn-outline-warning waves-effect waves-light"><i
-                                            class="bx bx-pencil"></i>
-                                    </a>
-                                    <button onclick="OpenModalDelete( '{{ $menu->id }}', '{{ $menu->title }}' )"
+                            @foreach ($menus as $menu)
+                                <tr>
+                                    <td>{{ $menu->id }}</td>
+                                    <td>{{ $menu->title }}</td>
+                                    @if ($menu->parent)
+                                        <td>{{ $menu->parent->title }}</td>
+                                    @else
+                                        <td>Нет родителя</td>
+                                    @endif
+                                    <td>{{ $menu->link }}</td>
+                                    <td>{{ $menu->index }}</td>
+                                    <td>
+                                        <a href="{{ route('pageUpdate', $menu->id) }}"
+                                            class="btn btn-outline-warning waves-effect waves-light"><i
+                                                class="bx bx-pencil"></i>
+                                        </a>
+                                        <button onclick="OpenModalDelete( '{{ $menu->id }}', '{{ $menu->title }}' )"
                                             type="button" class="btn btn-outline-danger waves-effect waves-light"><i
-                                            class="bx bxs-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
+                                                class="bx bxs-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -72,7 +71,7 @@
 
     <!-- ADD MENU MODAL -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -85,7 +84,7 @@
                         <div class="mb-3">
                             <label class="form-label">Загаловок</label>
                             <input name="title" type="text" required class="form-control"
-                                   placeholder="Введите Загаловок">
+                                placeholder="Введите Загаловок">
                         </div>
 
                         <div class="row">
@@ -97,10 +96,9 @@
                                         <option value="0" selected>Не один</option>
                                         @foreach ($menus as $menu)
                                             @php
-                                                $spaces = "";
-                                                for ($i=0; $i<=$menu['level']; $i++)
-                                                {
-                                                    $spaces .= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                                                $spaces = '';
+                                                for ($i = 0; $i <= $menu['level']; $i++) {
+                                                    $spaces .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                                                 }
                                             @endphp
                                             <option value="{{ $menu->id }}"><?= $spaces ?>{{ $menu->title }}</option>
@@ -119,7 +117,7 @@
                                 <div class="mb-3">
                                     <label class="form-label">Индекс</label>
                                     <input type="number" required name="index" class="form-control"
-                                           placeholder="Введите индекс">
+                                        placeholder="Введите индекс">
                                 </div>
                             </div>
                         </div>
@@ -137,7 +135,7 @@
 
     <!-- EDIT MENU MODAL -->
     <div class="modal fade" id="DELETE_MODAL" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="DELETE_MODAL" aria-hidden="true">
+        role="dialog" aria-labelledby="DELETE_MODAL" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -165,10 +163,10 @@
 
 @section('footer-links')
     <!-- Required datatable js -->
-    <script src="{{ asset('assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#files-table').DataTable();
         });
 

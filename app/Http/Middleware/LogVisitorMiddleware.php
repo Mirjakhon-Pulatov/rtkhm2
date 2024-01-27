@@ -13,7 +13,7 @@ class LogVisitorMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @param \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response) $next
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -36,6 +36,14 @@ class LogVisitorMiddleware
                 'visit_time' => Carbon::now()
             ]);
         }
+
+        // Delete get parametrs
+
+        $requestt = $request->getRequestUri();
+        if (strpos($requestt, '?') !== false) {
+            return redirect()->to('/', 301);
+        }
+
 
         return $next($request);
     }

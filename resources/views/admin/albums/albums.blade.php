@@ -2,10 +2,8 @@
 @section('header-links')
 @endsection
 @section('page-name')
-
     <h4 class="mb-sm-0 font-size-18">Альбомы</h4>
-    <button class="btn btn-primary" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop" type="button">Добавить +
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button">Добавить +
     </button>
 @endsection
 @section('content')
@@ -18,18 +16,19 @@
                     <div class="row mt-2">
 
 
-                        @foreach($albums as $album)
+                        @foreach ($albums as $album)
                             @php
-                                $COUNT =  \Illuminate\Support\Facades\DB::select("  SELECT COUNT(id) FROM `gallerys` where album_id  = '$album->id' ");
+                                $COUNT = \Illuminate\Support\Facades\DB::select("  SELECT COUNT(id) FROM `gallerys` where album_id  = '$album->id' ");
                             @endphp
 
                             <div class="col-lg-2 col-md-12 col-sm-4 col-12 mt-3">
                                 <a href="{{ route('showalbum', $album->id) }}">
                                     <div class="album_item">
                                         <img class="img-thumbnail gallery_img img-fluid" width="100%" height="auto"
-                                             src="{{ asset('assets/admin/images/folder.png') }}" alt="folder">
+                                            src="{{ asset('public/assets/admin/images/folder.png') }}" alt="folder">
                                         <p class=" w-100 text-center">{{ $album->title }}
-                                            ({{ $COUNT[0]->{'COUNT(id)'}  }})</p>
+                                            ({{ $COUNT[0]->{'COUNT(id)'} }})
+                                        </p>
                                     </div>
                                 </a>
                             </div>
@@ -45,10 +44,10 @@
 
     <!-- ADD MENU MODAL -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <form action="{{ route('storealbum')  }}" method="POST">
+                <form action="{{ route('storealbum') }}" method="POST">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Добавить Альбом</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -59,7 +58,7 @@
                         <div class="mb-3">
                             <label class="form-label">Загаловок</label>
                             <input name="title" type="text" required class="form-control"
-                                   placeholder="Введите Загаловок">
+                                placeholder="Введите Загаловок">
                         </div>
 
 
@@ -96,7 +95,7 @@
 
 @section('footer-links')
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
         });
     </script>

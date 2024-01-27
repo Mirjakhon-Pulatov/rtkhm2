@@ -1,19 +1,18 @@
 @extends('admin.layout.layout')
 @section('header-links')
     <!-- DataTables -->
-    <link href="{{ asset('assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
-          rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
+        rel="stylesheet" type="text/css" />
     <!-- Responsive Table css -->
-    <link href="{{ asset('assets/admin/libs/admin-resources/rwd-table/rwd-table.min.css') }}" rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('public/assets/admin/libs/admin-resources/rwd-table/rwd-table.min.css') }}" rel="stylesheet"
+        type="text/css" />
 @endsection
 @section('page-name')
     <h4 class="mb-sm-0 font-size-18">Добавить Язык</h4>
     <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop">
+        data-bs-target="#staticBackdrop">
         Добавить +
     </button>
 @endsection
@@ -24,34 +23,32 @@
                 <div class="card-body">
                     <table id="files-table" class="table table-bordered table-responsive">
                         <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Язык</th>
-                            <th>Код языка</th>
-                            <th>Действие</th>
-                        </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Язык</th>
+                                <th>Код языка</th>
+                                <th>Действие</th>
+                            </tr>
                         </thead>
                         <tbody>
 
-                        @foreach($langs as $langitem)
-                            <tr>
-                                <td>{{ $langitem->id  }}</td>
-                                <td>{{ $langitem->lang  }}</td>
-                                <td>{{ $langitem->slug  }}</td>
-                                <td>
-                                    <button
-                                        onclick="OpenModalEdit('{{ $langitem->id  }}', '{{ $langitem->lang  }}', '{{ $langitem->slug  }}')"
-                                        type="button" class="btn btn-outline-warning"><i
-                                            class="bx bx-pencil"></i>
-                                    </button>
-                                    <button
-                                        onclick="OpenModalDelete( '{{ $langitem->id  }}', '{{ $langitem->lang  }}' )"
-                                        type="button" class="btn btn-outline-danger waves-effect waves-light"><i
-                                            class="bx bxs-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        @endforeach
+                            @foreach ($langs as $langitem)
+                                <tr>
+                                    <td>{{ $langitem->id }}</td>
+                                    <td>{{ $langitem->lang }}</td>
+                                    <td>{{ $langitem->slug }}</td>
+                                    <td>
+                                        <button
+                                            onclick="OpenModalEdit('{{ $langitem->id }}', '{{ $langitem->lang }}', '{{ $langitem->slug }}')"
+                                            type="button" class="btn btn-outline-warning"><i class="bx bx-pencil"></i>
+                                        </button>
+                                        <button onclick="OpenModalDelete( '{{ $langitem->id }}', '{{ $langitem->lang }}' )"
+                                            type="button" class="btn btn-outline-danger waves-effect waves-light"><i
+                                                class="bx bxs-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -63,7 +60,7 @@
 
     <!-- ADD MENU MODAL -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -76,13 +73,13 @@
                         <div class="mb-3">
                             <label class="form-label">Язык</label>
                             <input name="lang" type="text" required class="form-control"
-                                   placeholder="Введите название языка">
+                                placeholder="Введите название языка">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Код языка</label>
                             <input name="code_lang" type="text" required class="form-control"
-                                   placeholder="Введите код языка">
+                                placeholder="Введите код языка">
                         </div>
 
 
@@ -98,8 +95,8 @@
 
 
     <!-- EDIT MODAL -->
-    <div class="modal fade" id="EDIT" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="EDIT" aria-hidden="true">
+    <div class="modal fade" id="EDIT" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog"
+        aria-labelledby="EDIT" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -113,7 +110,7 @@
                         <div class="mb-3">
                             <label class="form-label">Язык</label>
                             <input name="lang" type="text" id="edit_lang" required class="form-control"
-                                   placeholder="Введите название языка">
+                                placeholder="Введите название языка">
                         </div>
 
                         <div class="mb-3">
@@ -135,7 +132,7 @@
 
     <!-- DELETE MODAL -->
     <div class="modal fade" id="DELETE" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="DELETE" aria-hidden="true">
+        role="dialog" aria-labelledby="DELETE" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -162,15 +159,14 @@
 
 @section('footer-links')
     <!-- Required datatable js -->
-    <script src="{{ asset('assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script>
-
         const myModal = new bootstrap.Modal(document.getElementById('EDIT'));
         const myModal2 = new bootstrap.Modal(document.getElementById('DELETE'));
 
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#files-table').DataTable();
 
 

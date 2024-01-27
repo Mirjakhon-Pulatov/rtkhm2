@@ -1,15 +1,15 @@
 @extends('admin.layout.layout')
 @section('header-links')
     <!-- DataTables -->
-    <link href="{{ asset('assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
-          rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
+        rel="stylesheet" type="text/css" />
 @endsection
 @section('page-name')
     <h4 class="mb-sm-0 font-size-18">Добавить Файлы</h4>
     <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop">
+        data-bs-target="#staticBackdrop">
         Добавить +
     </button>
 @endsection
@@ -22,57 +22,57 @@
                     <div class="table-responsive">
                         <table id="files-table" class=" table table-bordered dt-responsive  nowrap w-100">
                             <thead>
-                            <tr>
-                                <th>№</th>
-                                <th>Расширение</th>
-                                <th>Имя файла</th>
-                                <th>Размер файла</th>
-                                <th>Время</th>
-                                <th>Действия</th>
-                            </tr>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Расширение</th>
+                                    <th>Имя файла</th>
+                                    <th>Размер файла</th>
+                                    <th>Время</th>
+                                    <th>Действия</th>
+                                </tr>
                             </thead>
 
 
                             <tbody>
-                            @foreach($files as $key=>$file)
-                                <tr>
-                                    <td style="text-align: center; vertical-align: middle">{{ $key+1 }}</td>
-                                    <td style="text-align:  center">
-                                        @if(file_exists(public_path('assets/admin/filetypes/'.$file->type.'.png')))
-                                            <img src="{{ asset('assets/admin/filetypes/'.$file->type.'.png') }}"
-                                                 alt="alt"
-                                                 style="width: 35px; height: auto; margin-right: 5px;">
-                                            .{{ $file->type }}
-                                        @else
-                                            <img src="{{ asset('assets/admin/filetypes/file.png') }}" alt="alt"
-                                                 style="width: 35px; height: auto; margin-right: 5px;">
-                                            .{{ $file->type }}
-                                        @endif
+                                @foreach ($files as $key => $file)
+                                    <tr>
+                                        <td style="text-align: center; vertical-align: middle">{{ $key + 1 }}</td>
+                                        <td style="text-align:  center">
+                                            @if (file_exists(public_path('public/assets/admin/filetypes/' . $file->type . '.png')))
+                                                <img src="{{ asset('public/assets/admin/filetypes/' . $file->type . '.png') }}"
+                                                    alt="alt" style="width: 35px; height: auto; margin-right: 5px;">
+                                                .{{ $file->type }}
+                                            @else
+                                                <img src="{{ asset('public/assets/admin/filetypes/file.png') }}"
+                                                    alt="alt" style="width: 35px; height: auto; margin-right: 5px;">
+                                                .{{ $file->type }}
+                                            @endif
 
-                                    </td>
-                                    <td style="text-align:center">files/{{ $file->filename }}</td>
+                                        </td>
+                                        <td style="text-align:center">files/{{ $file->filename }}</td>
 
-                                    <td style="text-align:  center">
-                                        {{ $file->size }}
-                                    </td>
+                                        <td style="text-align:  center">
+                                            {{ $file->size }}
+                                        </td>
 
-                                    <td style="text-align:  center">{{ $file->created_at->format('H:i d.m.Y') }}</td>
-                                    <td style="text-align:  center" class="d-flex justify-content-evenly">
-                                        <a title="Скачать файл" href="{{ asset('uploads/files/'. $file->filename) }}"
-                                           download="{{$file->filename}}" class="btn btn-outline-primary"><i
-                                                class="bx bxs-download"></i></a>
-                                        <button title="Копировать путь к файлу"
+                                        <td style="text-align:  center">{{ $file->created_at->format('H:i d.m.Y') }}</td>
+                                        <td style="text-align:  center" class="d-flex justify-content-evenly">
+                                            <a title="Скачать файл"
+                                                href="{{ asset('public/uploads/files/' . $file->filename) }}"
+                                                download="{{ $file->filename }}" class="btn btn-outline-primary"><i
+                                                    class="bx bxs-download"></i></a>
+                                            <button title="Копировать путь к файлу"
                                                 class="btn btn-outline-success copy-button">
-                                            <i class="bx bxs-copy"></i>
-                                        </button>
-                                        <button title="Удалить файл"
+                                                <i class="bx bxs-copy"></i>
+                                            </button>
+                                            <button title="Удалить файл"
                                                 onclick="OpenModalDelete( '{{ $file->id }}', '{{ $file->filename }}' )"
                                                 type="button" class="btn btn-outline-danger waves-effect waves-light">
-                                            <i class="bx bxs-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                                <i class="bx bxs-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
 
                             </tbody>
@@ -85,7 +85,7 @@
 
     <!-- Static Backdrop Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -98,8 +98,7 @@
                         @method('POST')
                         <div class="mb-3">
                             <label class="form-label mb-2">Ф а й л : </label>
-                            <input name="filename" id="fileInput" class="form-control"
-                                   type="file">
+                            <input name="filename" id="fileInput" class="form-control" type="file">
                             <span class="text-danger" id="errorText">
 
                             </span>
@@ -130,9 +129,7 @@
                     <h5 class="modal-title" id="myModalLabel">Вы уверены, что хотите удалить элемент?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form class="m-2 d-inline-block"
-                      action="{{ route('file.delete') }}"
-                      method="POST">
+                <form class="m-2 d-inline-block" action="{{ route('file.delete') }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <input id="delete_id" type="hidden" name="file_id" value="">
@@ -150,7 +147,6 @@
         </div><!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
-
 @endsection
 
 @section('footer-links')
@@ -161,12 +157,11 @@
         }
     </style>
     <!-- Required datatable js -->
-    <script src="{{ asset('assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 
     <script>
-
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#files-table').DataTable();
         });
 
@@ -180,8 +175,8 @@
     </script>
 
     <script>
-        $(document).ready(function () {
-            $(".copy-button").click(function () {
+        $(document).ready(function() {
+            $(".copy-button").click(function() {
                 // Find the previous sibling <a> element
                 var linkElement = $(this).prev('a');
 
@@ -214,7 +209,7 @@
         var submitButton = document.getElementById("submitButton");
         var errorText = document.getElementById("errorText");
 
-        fileInput.addEventListener("change", function () {
+        fileInput.addEventListener("change", function() {
             // Проверяем, есть ли выбранный файл
             if (fileInput.files.length > 0) {
                 var selectedFile = fileInput.files[0];
@@ -235,7 +230,9 @@
         });
 
         function isValidFileExtension(file) {
-            var allowedExtensions = ["avi", "doc", "jpg", "png", "docx", "xls", "xlsx", "mp3", "mp4", "txt", "ppt", "pptx", "zip", "pdf"]; // Расширения, которые вы разрешаете
+            var allowedExtensions = ["avi", "doc", "jpg", "png", "docx", "xls", "xlsx", "mp3", "mp4", "txt", "ppt", "pptx",
+                "zip", "pdf"
+            ]; // Расширения, которые вы разрешаете
 
             // Получаем расширение файла
             var fileName = file.name;
@@ -252,6 +249,4 @@
             return file.size <= maxSizeInBytes;
         }
     </script>
-
 @endsection
-

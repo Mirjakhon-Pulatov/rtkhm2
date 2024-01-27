@@ -1,0 +1,508 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+
+a {
+    font-family: Montserrat, sans-serif
+}
+
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+label,
+li,
+p,
+td,
+textarea,
+th {
+    font-family: Montserrat, sans-serif !important
+}
+
+.card_hover {
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 3px 0, rgba(0, 0, 0, .06) 0 1px 2px 0;
+    transition: ease-in-out .3s all
+}
+
+.card_hover:hover {
+    box-shadow: rgba(50, 50, 93, .25) 0 13px 27px -5px, rgba(0, 0, 0, .3) 0 8px 16px -8px;
+    transition: ease-in-out .3s all
+}
+
+.blue_line {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.card_image__ h4 {
+    position: absolute;
+    font-weight: 500;
+    padding: 4px;
+    width: 100%;
+    text-align: center;
+    line-height: 22px;
+    margin: 0;
+    z-index: 300;
+    color: #fff
+}
+
+.blue_line::after {
+    content: " ";
+    position: relative;
+    top: 4px;
+    left: 0;
+    border-radius: 20%;
+    width: 20px;
+    height: 3px;
+    background-color: #00f;
+    transition: all ease-in-out .3s
+}
+
+.link_sercv:hover .blue_line::after {
+    width: 200px;
+    transition: all ease-in-out .3s;
+    background-color: #f2f2f2 !important
+}
+
+.link_sercv:hover .servcs_card {
+    background-color: #2a4ec1;
+    transition: all ease-in-out .3s;
+    box-shadow: rgba(0, 0, 0, .19) 0 10px 20px, rgba(0, 0, 0, .23) 0 6px 6px
+}
+
+.link_sercv:hover .servcs_card h6 {
+    color: #fff
+}
+
+.link_sercv:hover .card_image__::after {
+    transition: all ease-in-out .3s
+}
+
+.link_sercv {
+    text-decoration: none !important
+}
+
+.servcs_card h6 {
+    color: gray;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 12px;
+    font-size: 15px;
+    transition: all ease-in-out .3s;
+    text-align: left
+}
+
+.servcs_card {
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transition: all ease-in-out .3s
+}
+
+.card_image__ {
+    width: 100%;
+    height: 270px;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end
+}
+
+@media only screen and (max-width: 772px) {
+    .servcs_card {
+        width: 100%;
+        background-color: #f2f2f2;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        text-align: center;
+        height: 500px;
+        align-items: flex-start
+    }
+
+    .card_image__ {
+        width: 100%;
+        height: 400px;
+        background-position: center;
+        background-size: cover
+    }
+
+    .m_center {
+        text-align: center
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1450px) {
+    .c_servs {
+        width: 1100px
+    }
+}
+
+@media only screen and (min-width: 1450px) {
+    .c_servs {
+        width: 1200px
+    }
+
+    . .card_image__ {
+        width: 100%;
+        background-position: center;
+        background-size: cover
+    }
+
+    .servcs_card {
+        width: 100%;
+        background-color: #f2f2f2;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        text-align: center;
+        height: 280px
+    }
+}
+
+.input-group-text {
+    font-family: Montserrat, sans-serif !important
+}
+
+.me-4 {
+    font-family: Montserrat, sans-serif !important
+}
+
+.num_circle {
+    font-family: Montserrat, sans-serif !important
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+    background-color: #fff
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #335eea;
+    border-radius: 9em
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #2451a0
+}
+
+.price_img {
+    width: 100%;
+    height: 240px;
+    background-position: center;
+    background-size: cover
+}
+
+@media only screen and (max-width: 600px) {
+    .price_img {
+        width: 100%;
+        height: 390px;
+        background-position: center;
+        background-size: cover
+    }
+}
+
+@media only screen and (max-width: 458px) {
+    .nav-item button {
+        font-size: 14px;
+        padding: 5px !important
+    }
+}
+
+.scrolMenu {
+    box-shadow: 0 .5rem 1.5rem rgb(22 28 45 / 10%) !important
+}
+
+.navbar {
+    position: fixed !important;
+    width: 100% !important
+}
+
+@media only screen and (max-width: 768px) {
+    .mtmain {
+        margin-top: 7.5vh !important
+    }
+
+    .navbar {
+        padding: 12px !important;
+        position: fixed !important;
+        width: 100% !important;
+        margin-bottom: 12px !important;
+        top: 0;
+        left: 0
+    }
+}
+
+.Sidebar_list {
+    padding-left: 20px;
+    list-style: none;
+    border-bottom: 3px solid #f2f2f2;
+    padding-bottom: 30px
+}
+
+.title_sidebar {
+    padding-left: 20px;
+    border-left: 3px solid #335eea;
+    font-weight: 500;
+    font-weight: 500
+}
+
+.Sidebar_list li a {
+    color: #000;
+    transition: .3s ease-in-out all
+}
+
+.Sidebar_list li a:hover {
+    text-decoration: none;
+    color: #335eea
+}
+
+.Sidebar_list2 {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    padding-left: 20px
+}
+
+.Sidebar_list2 li {
+    margin-bottom: 15px
+}
+
+.sidebar_textD {
+    margin-left: 44px
+}
+
+.sidebar_icon {
+    position: relative;
+    top: 16px;
+    right: 13px
+}
+
+.title_ {
+    font-weight: 500
+}
+
+.contacntss_ {
+    list-style: none
+}
+
+.social_links {
+    list-style: none
+}
+
+.contactboxx {
+    min-height: 100%;
+    box-shadow: 0 1.5rem 4rem rgb(22 28 45 / 10%)
+}
+
+.mtext_15 {
+    margin: 15px
+}
+
+.num_circle {
+    padding: 10px;
+    border-radius: 100%;
+    border: #335eea 1px solid;
+    width: 50px !important;
+    height: 50px !important;
+    margin-bottom: 10px;
+    color: #335eea;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    left: 12px
+}
+
+.when_ocenka {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, .1);
+    margin-top: 30px;
+    transition: all ease-in-out .3s
+}
+
+.when_ocenka:hover {
+    box-shadow: rgba(0, 0, 0, .1) 0 10px 15px -3px, rgba(0, 0, 0, .05) 0 4px 6px -2px;
+    transition: all ease-in-out .3s
+}
+
+.price_nm {
+    width: 100%;
+    text-align: center
+}
+
+.card_header {
+    width: 100%;
+    min-height: 70px;
+    background-color: rgba(51, 94, 234, .3)
+}
+
+.Price_card {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, .05);
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
+    justify-content: center;
+    transition: all ease-in-out .3s
+}
+
+.Price_card:hover {
+    transition: all ease-in-out .3s;
+    box-shadow: rgba(0, 0, 0, .1) 0 10px 15px -3px, rgba(0, 0, 0, .05) 0 4px 6px -2px
+}
+
+.price_text {
+    padding: 10px;
+    text-align: center
+}
+
+.when_ocenka_title {
+    font-weight: 500
+}
+
+.text_otsp {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem
+}
+
+@media only screen and (max-width: 691px) {
+    .social_links {
+        margin: 20px auto !important
+    }
+
+    .when_ocenka_title {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        text-align: center
+    }
+
+    .Price_card {
+        margin-bottom: 25px;
+        box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, .1) !important
+    }
+
+    .mobile__ {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center
+    }
+
+    .mobile__ button {
+        margin: 15px auto
+    }
+}
+
+.Our_advantages_title {
+    width: 63%;
+    margin-left: 7%;
+    margin-bottom: 0;
+    font-weight: 500
+}
+
+.Our_advantages_icon {
+    margin-left: 12px
+}
+
+.card-body h3 {
+    color: #506690;
+}
+
+.img_news_ {
+    height: 270px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.accordion-button {
+    background: #EAF0FF !important;
+}
+
+.accordion-button.collapsed {
+    background: #fff !important;
+}
+
+.position-relative {
+    top: 1px;
+}
+
+.footer_links {
+    padding: 10px 0px;
+    margin: 0px;
+    list-style: none;
+    display: flex;
+}
+
+.footer_links li {
+    margin: 0px 10px;
+}
+
+.footer_links li a {
+    margin: 0px 10px;
+    color: #fff !important;
+}
+
+hr {
+    margin: 0px;
+}
+
+.change_lang {
+    background: transparent !important;
+    border: 0px !important;
+    color: #506690;
+    font-weight: 600 !important;
+}
+
+
+.list-social{
+    height: 100%;
+}
+
+@media only screen and (max-width: 767px) {
+    .footer_links {
+        display: flex;
+        flex-direction: column;
+        margin: 0px !important;
+    }
+
+    .footer_links li a{
+        margin: 0px;
+
+    }
+
+    .footer_links li{
+        margin: 0px;
+        padding: 5px 0px;
+    }
+
+    .btn-group{
+        display: none !important;
+    }
+
+    .nav-item .mt-1{
+        padding: 10px !important;
+    }
+}

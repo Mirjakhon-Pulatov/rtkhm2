@@ -1,15 +1,15 @@
 @extends('admin.layout.layout')
 @section('header-links')
     <!-- DataTables -->
-    <link href="{{ asset('assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
-          rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
+        type="text/css" />
+    <link href="{{ asset('public/assets/admin/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}"
+        rel="stylesheet" type="text/css" />
 @endsection
 @section('page-name')
     <h4 class="mb-sm-0 font-size-18">Тип Контента</h4>
     <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop">
+        data-bs-target="#staticBackdrop">
         Добавить +
     </button>
 @endsection
@@ -21,33 +21,32 @@
 
                     <table id="files-table" class=" table table-bordered dt-responsive  nowrap w-100">
                         <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Название Типа</th>
-                            <th>Имя таблицы</th>
-                            <th>Описание</th>
-                            <th>Действие</th>
-                        </tr>
+                            <tr>
+                                <th>ID</th>
+                                <th>Название Типа</th>
+                                <th>Имя таблицы</th>
+                                <th>Описание</th>
+                                <th>Действие</th>
+                            </tr>
                         </thead>
 
 
                         <tbody>
 
-                        @foreach($Content_types as $type)
-                            <tr>
-                                <td>{{ $type->id }}</td>
-                                <td>{{ $type->name }}</td>
-                                <td>{{ $type->dt }}</td>
-                                <td>{{ $type->desc }}</td>
-                                <td>
-                                    <a href="{{ route('content_types_edit', $type) }}"
-                                       class="btn btn-outline-warning"><i
-                                            class="bx bx-pencil"></i></a>
-                                    <button onclick="OpenModalDelete( '{{ $type->id }}', '{{ $type->name }}' )"
+                            @foreach ($Content_types as $type)
+                                <tr>
+                                    <td>{{ $type->id }}</td>
+                                    <td>{{ $type->name }}</td>
+                                    <td>{{ $type->dt }}</td>
+                                    <td>{{ $type->desc }}</td>
+                                    <td>
+                                        <a href="{{ route('content_types_edit', $type) }}"
+                                            class="btn btn-outline-warning"><i class="bx bx-pencil"></i></a>
+                                        <button onclick="OpenModalDelete( '{{ $type->id }}', '{{ $type->name }}' )"
                                             class="btn btn-outline-danger"><i class="bx bx-trash"></i></button>
-                                </td>
-                            </tr>
-                        @endforeach
+                                    </td>
+                                </tr>
+                            @endforeach
 
                         </tbody>
                     </table>
@@ -60,7 +59,7 @@
 
     <!-- Create content_type -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -73,17 +72,17 @@
                         <div class="mb-3">
                             <label class="form-label">Название Типа:</label>
                             <input name="type_name" type="text" required class="form-control"
-                                   placeholder="Введите Название">
+                                placeholder="Введите Название">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Имя таблицы:</label>
                             <input pattern="[A-Za-z_]*" name="table_name" type="text" required class="form-control"
-                                   placeholder="Введите Имя таблицы">
+                                placeholder="Введите Имя таблицы">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Описание:</label>
                             <input name="type_desc" type="text" required class="form-control"
-                                   placeholder="Введите Описание">
+                                placeholder="Введите Описание">
                         </div>
 
                         <div class="modal-footer">
@@ -100,7 +99,7 @@
 
     <!-- Edit content_type -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -113,17 +112,17 @@
                         <div class="mb-3">
                             <label class="form-label">Название Типа:</label>
                             <input name="type_name" type="text" required class="form-control"
-                                   placeholder="Введите Название">
+                                placeholder="Введите Название">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Имя таблицы:</label>
                             <input pattern="[A-Za-z_]*" name="table_name" type="text" required class="form-control"
-                                   placeholder="Введите Имя таблицы">
+                                placeholder="Введите Имя таблицы">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Описание:</label>
                             <input name="type_desc" type="text" required class="form-control"
-                                   placeholder="Введите Описание">
+                                placeholder="Введите Описание">
                         </div>
 
                         <div class="modal-footer">
@@ -140,7 +139,7 @@
 
     <!-- Delete content_type -->
     <div class="modal fade" id="DELETE_MODAL" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-         role="dialog" aria-labelledby="DELETE_MODAL" aria-hidden="true">
+        role="dialog" aria-labelledby="DELETE_MODAL" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -165,18 +164,14 @@
             </div>
         </div>
     </div>
-
 @endsection
 
 @section('footer-links')
     <!-- Required datatable js -->
-    <script src="{{ asset('assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script>
-
-
-
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#files-table').DataTable();
         });
 

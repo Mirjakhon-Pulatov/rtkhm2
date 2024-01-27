@@ -123,6 +123,9 @@ if ($position !== false) {
                                                    class="form-control" required>
                                         </div>
                                     @else
+                                        @php
+                                            $value = str_replace("\"../../public/", "\"../../../public/", $value);
+                                        @endphp
                                         <div class="mb-4">
                                             <label class="form-label">{{ $feilds->label }}</label>
                                             <textarea name="{{ $feilds->name }}"
@@ -278,7 +281,7 @@ if ($position !== false) {
                         <div class="card-body">
                             <div class="photo">@if($FuturedImage)
                                     <img class="img-article" width="100%" height="auto"
-                                         src="{{ asset("uploads/gallery/thumbnails/".  $FuturedImage) }}"/>
+                                         src="{{ asset("public/uploads/gallery/thumbnails/".  $FuturedImage) }}"/>
                                     <button onclick="DeleteImageCurent()" class="delete_image btn btn-sm btn-danger"
                                             type="button"><i class="bx bx-trash"></i></button>
                                 @endif</div>
@@ -323,7 +326,7 @@ if ($position !== false) {
                                             <div is_num="{{ $extra->s_num }}" class=count_div
                                                  type=button>{{ $extra->s_num }}</div>
                                             <img height=auto
-                                                 src='{{ asset("uploads/gallery/thumbnails/" . $image->file ) }}'
+                                                 src='{{ asset("public/uploads/gallery/thumbnails/" . $image->file ) }}'
                                                  width=100%>
                                             <button
                                                 onclick="DeleteExtraImage('{{ $extra->dt }}', '{{ $extra->code }}', {{ $extra->image_id }}, {{ $extra->s_num }})"
@@ -366,7 +369,7 @@ if ($position !== false) {
                                             <div is_num="{{ $extra->s_num }}" class=count_div
                                                  type=button>{{ $extra->s_num }}</div>
                                             <img height=auto
-                                                 src='{{ asset("uploads/gallery/thumbnails/" . $image->file ) }}'
+                                                 src='{{ asset("public/uploads/gallery/thumbnails/" . $image->file ) }}'
                                                  width=100%>
                                             <button
                                                 onclick="DeleteExtraImage('{{ $extra->dt }}', '{{ $extra->code }}', {{ $extra->image_id }}, {{ $extra->s_num }})"
@@ -430,7 +433,7 @@ if ($position !== false) {
 
                                     <div class="album-item" onclick="loadModalGallery({{ $album->id }})">
                                         <img width="50%" height="auto"
-                                             src="{{ asset('assets/admin/images/folder.png') }}">
+                                             src="{{ asset('public/assets/admin/images/folder.png') }}">
                                         <p class="w-100 text-center card-title">{{ $album->title }} ({{ $count }})</p>
                                     </div>
                                 @endforeach
@@ -486,7 +489,7 @@ if ($position !== false) {
 
                                     <div class="album-item" onclick="loadModalGalleryExtra({{ $album->id }})">
                                         <img width="50%" height="auto"
-                                             src="{{ asset('assets/admin/images/folder.png') }}">
+                                             src="{{ asset('public/assets/admin/images/folder.png') }}">
                                         <p class="w-100 text-center card-title">{{ $album->title }} ({{ $count }})</p>
                                     </div>
                                 @endforeach
@@ -669,7 +672,7 @@ if ($position !== false) {
 @endsection
 
 @section('footer-links')
-    <script src="{{ asset('assets\admin\libs\custom\translate.js') }}"></script>
+    <script src="{{ asset('public\assets\admin\libs\custom\translate.js') }}"></script>
 
     <script>
 

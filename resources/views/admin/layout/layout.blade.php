@@ -3,33 +3,39 @@
 
 <head>
 
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>B-CMS | Панель администратора</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description"/>
-    <meta content="Themesbrand" name="author"/>
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/admin/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('public/assets/admin/images/favicon.ico') }}">
 
     <!-- Bootstrap Css -->
-    <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('public/assets/admin/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
     <!-- Icons Css -->
-    <link href="{{ asset('assets/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('public/assets/admin/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="{{ asset('assets/admin/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('assets/admin/css/main.css') }}" id="bootstrap-style" rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('public/assets/admin/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('public/assets/admin/css/main.css') }}" id="bootstrap-style" rel="stylesheet"
+        type="text/css" />
 
-    <link rel="stylesheet" href="{{ asset('assets/admin/libs/toastr/build/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/admin/libs/toastr/build/toastr.min.css') }}">
 
 
     @yield('header-links')
 </head>
 
-@php if (isset($_COOKIE["Menu"]) && $_COOKIE["Menu"] === "false"){ $menuClosed = "class=vertical-collpsed "; }else{ $menuClosed = " "; } @endphp
+@php
+    if (isset($_COOKIE['Menu']) && $_COOKIE['Menu'] === 'false') {
+        $menuClosed = 'class=vertical-collpsed ';
+    } else {
+        $menuClosed = ' ';
+    }
+@endphp
 
-    <body data-sidebar="dark" data-layout-mode="light" {{ $menuClosed }}>
+<body data-sidebar="dark" data-layout-mode="light" {{ $menuClosed }}>
 
     <!-- Begin page -->
     <div id="layout-wrapper">
@@ -87,22 +93,19 @@
     <!-- END layout-wrapper -->
 
     <!-- JAVASCRIPT -->
-    <script src="{{ asset('assets/admin/libs/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/metismenu/metisMenu.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/simplebar/simplebar.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/node-waves/waves.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/libs/toastr/build/toastr.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/app.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/metismenu/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/libs/toastr/build/toastr.min.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/js/app.js') }}"></script>
+    <script src="{{ asset('public/assets/admin/js/main.js') }}"></script>
     @include('admin.blocks.errors')
     @yield('footer-links')
 
-    <script>
+    <script></script>
 
-
-    </script>
-
-    </body>
+</body>
 
 </html>
