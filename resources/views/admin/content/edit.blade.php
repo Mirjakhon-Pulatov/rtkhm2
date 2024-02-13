@@ -54,7 +54,7 @@ if ($position !== false) {
                             @endphp
 
                             @if($feilds->is_slug == 1)
-                                <input type="hidden" name="slug" id="slug_hidden">
+                                <input type="hidden" name="slug" value="{{ $datav->slug  }}" id="slug_hidden">
                             @endif
 
                             @if(strpos($feilds->type, 'dt_') !== false )
@@ -266,7 +266,7 @@ if ($position !== false) {
 
                                     <div class="mb-4">
                                         <textarea id="slug_visible" type="text"
-                                                  class="form-control"></textarea>
+                                                  class="form-control">{{ $datav->slug  }}</textarea>
                                     </div>
 
                                 @endif
@@ -363,14 +363,15 @@ if ($position !== false) {
                                     @foreach($ExtraImages as $extra)
                                         @php
                                             $image = \App\Models\gallerys::select('file')->where('id', $extra->image_id)->first();
-
                                         @endphp
                                         <div class="col-md-12 extra_image mb-4" is_num="{{ $extra->s_num }}">
                                             <div is_num="{{ $extra->s_num }}" class=count_div
                                                  type=button>{{ $extra->s_num }}</div>
+                                                @if($image !== null)
                                             <img height=auto
                                                  src='{{ asset("public/uploads/gallery/thumbnails/" . $image->file ) }}'
                                                  width=100%>
+                                                 @endif
                                             <button
                                                 onclick="DeleteExtraImage('{{ $extra->dt }}', '{{ $extra->code }}', {{ $extra->image_id }}, {{ $extra->s_num }})"
                                                 class="btn btn-sm btn-danger delete_extra_image" type=button><i
@@ -842,17 +843,24 @@ if ($position !== false) {
             // alert("asdasd");
         });
 
-        function onWindowLoad() {
-            const valueTitle = $("#slug_title").val();
-            const slug = generateSlug(valueTitle);
-            $("#slug_visible").val(slug);
+        $("#slug_visible").on("input", function () {
+            const inputValue = $(this).val();
+            const slug = generateSlug(inputValue);
             $("#slug_hidden").val(slug);
-        }
+            // alert(slug);
+        });
 
-        setTimeout(onWindowLoad, 1);
+        // function onWindowLoad() {
+        //     const valueTitle = $("#slug_title").val();
+        //     const slug = generateSlug(valueTitle);
+        //     $("#slug_visible").val(slug);
+        //     $("#slug_hidden").val(slug);
+        // }
+        //
+        // setTimeout(onWindowLoad, 1);
 
-        const valueee = $("#slug_title").val();
-        $("#slug_visible").val(valueee);
+        // const valueee = $("#slug_title").val();
+        // $("#slug_visible").val(valueee);
 
 
         function generateSlug(text) {

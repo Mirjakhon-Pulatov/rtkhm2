@@ -1,6 +1,14 @@
 User-agent: *
 Disallow: /admin/
-Disallow: /server.php
 Disallow: /assets/
 Disallow: /?gtm_debug=1698861637618
 Disallow: /*?*km=*
+Allow: /
+Allow: /sitemap.xml
+Host: https://kmt.uz/
+Sitemap: https://kmt.uz/sitemap.xml
+
+User-agent: YandexBot/3.0
+Allow: /
+Allow: /sitemap.xml
+Sitemap: https://kmt.uz/sitemap.xml

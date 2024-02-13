@@ -14,15 +14,19 @@ use App\Http\Controllers\CrudContentTypesController;
 use App\Http\Controllers\ExtraImagesController;
 use App\Models\Visitor;
 use App\Http\Middleware\LogVisitorMiddleware;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\Pages;
+use App\Http\Controllers\BlogsController;
+use Spatie\Sitemap\SitemapGenerator;
+
+Route::get('/', function (){
+    return view('admin.mainpage');
+});
 
 
 Route::middleware('LogVisitorMiddleware')->group(function () {
 
-
-    Route::get('/', function () {
-        return view('admin.mainpage');
-    });
-
+//    Sitni silkalari
 
 });
 
@@ -46,8 +50,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Artisan::call('config:clear');
         Artisan::call('view:clear');
         Artisan::call('route:clear');
+
+
+        SitemapGenerator::create('https://kmt.uz')->writeToFile(base_path('sitemap.xml'));
+
         return redirect()->back()->with('success', 'Кэш Очищен');
-    });
+    })->name('cache-clear');
 
 
     Route::get('/dashboard', function () {

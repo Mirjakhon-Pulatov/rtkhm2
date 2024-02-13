@@ -43,8 +43,11 @@ class LogVisitorMiddleware
         if (strpos($requestt, '?') !== false) {
             return redirect()->to('/', 301);
         }
+        
+        $response = $next($request);
+        
+        $response->header('X-Robots-Tag', 'index, follow');
 
-
-        return $next($request);
+        return $response;
     }
 }

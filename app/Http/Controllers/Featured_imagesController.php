@@ -69,7 +69,7 @@ class Featured_imagesController extends Controller
         if ($getImageId) {
             $getImageId = $getImageId[0]->image_id;
             $getImage = DB::select("Select file from gallerys where id = '$getImageId' ");
-            return $getImage = $getImage[0]->file;
+            return $getImage[0]->file ?? null;
         } else {
             return '';
         }

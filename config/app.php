@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'oouz.uz'),
+    'name' => env('APP_NAME', 'kmt.uz'),
 
     /*
     |--------------------------------------------------------------------------
@@ -170,6 +170,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Spatie\Sitemap\SitemapServiceProvider::class,
     ])->toArray(),
 
     /*

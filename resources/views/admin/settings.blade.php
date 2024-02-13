@@ -8,6 +8,7 @@
 @endsection
 @section('page-name')
     <h4 class="mb-sm-0 font-size-18">Настройки сайта</h4>
+    <a class="btn btn-success" href="{{ route('cache-clear') }}">Очистить кеш сайта</a>
 @endsection
 
 @section('content')
