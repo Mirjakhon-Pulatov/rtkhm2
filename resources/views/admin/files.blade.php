@@ -38,7 +38,7 @@
                                     <tr>
                                         <td style="text-align: center; vertical-align: middle">{{ $key + 1 }}</td>
                                         <td style="text-align:  center">
-                                            @if (file_exists(public_path('public/assets/admin/filetypes/' . $file->type . '.png')))
+                                            @if (file_exists(public_path('assets/admin/filetypes/' . $file->type . '.png')))
                                                 <img src="{{ asset('public/assets/admin/filetypes/' . $file->type . '.png') }}"
                                                     alt="alt" style="width: 35px; height: auto; margin-right: 5px;">
                                                 .{{ $file->type }}
