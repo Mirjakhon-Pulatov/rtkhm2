@@ -5,6 +5,7 @@ use App\Http\Controllers\BackupController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SitePageController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Content_typesController;
@@ -19,15 +20,30 @@ use App\Http\Controllers\Pages;
 use App\Http\Controllers\BlogsController;
 use Spatie\Sitemap\SitemapGenerator;
 
-Route::get('/', function (){
+Route::get('/', function () {
     return view('admin.mainpage');
 });
 
 
 Route::middleware('LogVisitorMiddleware')->group(function () {
 
-//    Sitni silkalari
+    Route::get('/', [\App\Http\Controllers\SitePageController::class, 'index']);
+    Route::get('/leadership', [\App\Http\Controllers\SitePageController::class, 'leadership']);
+    Route::get('/{type}/all', [SitePageController::class, 'all'])->name('all');
+    Route::get('/{type}/view/{slug}', [SitePageController::class, 'view'])->name('view');
+    Route::get('/pages/{slug}', [SitePageController::class, 'page'])->name('page');
+    Route::get('/faq', [\App\Http\Controllers\SitePageController::class, 'faq']);
+    Route::post('/search', [\App\Http\Controllers\SitePageController::class, 'search'])->name('search');
+    Route::get('/contact', [\App\Http\Controllers\SitePageController::class, 'contact']);
+    Route::get('/gallery', [\App\Http\Controllers\SitePageController::class, 'gallery']);
+    Route::get('/video', [\App\Http\Controllers\SitePageController::class, 'video']);
+    Route::post('/send-email', [SitePageController::class, 'sendEmail'])->name('send.email');
 
+
+
+    Route::fallback(function () {
+        return view('errors.404');
+    });
 });
 
 

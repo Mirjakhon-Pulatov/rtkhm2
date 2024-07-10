@@ -79,6 +79,7 @@ class AlbumController extends Controller
         $image->move(public_path('uploads/gallery/photos'), $imageName);
 
         $OriginalPohoto = public_path('uploads/gallery/photos/' . $imageName);
+        $Originalthump = public_path('uploads/gallery/thumbnails/' . $imageName);
 
         function makeThumb($src, $desired_width, $imageName)
         {
@@ -108,7 +109,15 @@ class AlbumController extends Controller
                 imagepng($virtual_image, $dest);
         }
 
-        makeThumb($OriginalPohoto, '640', $imageName);
+        $array = explode(".", $OriginalPohoto);
+        $ext = $array[count($array) - 1];
+        $ext = strtolower($ext);
+
+        if (!$ext == 'webp') {
+            makeThumb($OriginalPohoto, '640', $imageName);
+        } elseif ($ext == 'webp') {
+            copy($OriginalPohoto, $Originalthump);
+        }
 
 
         return response()->json(['success' => $imageName]);

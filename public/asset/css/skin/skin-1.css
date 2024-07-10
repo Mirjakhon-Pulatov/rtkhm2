@@ -1,0 +1,155 @@
+
+.sec-title span::after,
+.sec-title::after,
+.sec-title span::before,
+.sec-title:before,
+ #c-scroll,
+ .head-top,
+ .abt-info .btn-custom,
+ .service-col:hover::after,
+ .ser-overlay .btn-custom::after,
+ .service-theme-2 .ser-overlay .btn-custom,
+ .port-item:hover .proj-content,
+ .team-theme-1 .members::before,
+ .team-soc,
+ .team-slider .owl-nav .owl-next,
+.team-slider .owl-nav .owl-prev,
+.support-box .btn-custom:after,
+.price .nav-pills li.active,
+.price .nav-pills li.active, 
+.price .nav-pills li.active,
+.price-item h2::after,
+.price-item .btn-custom,
+.price-item.active .btn-custom:after,
+.form-subscribe .btn-custom,
+.slick-thumbnail-slider .slick-center .client-detail h5::after,
+.testimonial-content .slick-prev, 
+.testimonial-content .slick-next,
+.testimonial-content .slick-prev:focus, 
+.testimonial-content .slick-next:focus,
+.testimonial-theme-2 .owl-nav .owl-next,
+.testimonial-theme-2 .owl-nav .owl-prev,
+.blog-items:hover .blog-social,
+.blog-meta::after,
+.partner-slider .owl-dots .owl-dot.active span,
+.talk-us,
+.foot-title::after,
+.foot-social li:hover,
+.panel .panel-link,
+.skill-fill,
+.skill-fill::after,
+.pagination-item.active,
+.pagination-item:hover,
+.page-next a,
+.page-prev a,
+.side-form button,
+.widget-slider .owl-nav .owl-next,
+.widget-slider .owl-nav .owl-prev,
+.tag:hover,
+.det-list li:before,
+.blog-det-social:hover,
+.blog-nav a,
+.comment-form .btn-custom,
+.project-box .socials a:hover,
+.project-box .btn-custom,
+.search-form button,
+.talk-us .btn-custom::after,
+.page404 .btn-custom{    
+    background-color: #0c65ed;
+}
+
+
+.menu-link:hover,
+.blog-category a:hover,
+.dropdown>.menu-item>.menu-link:hover,
+.menu-item>.menu-link:hover,
+.call-us i,
+.mega-items h3,
+.slicknav_nav a:hover a,
+.slicknav_nav a:hover,
+.slicknav_nav .slicknav_row:hover,
+.slicknav_nav .slicknav_item a:hover, 
+.slicknav_nav .slicknav_parent-link a:hover,
+.detail-box li:hover h5,
+.detail-box li:hover i,
+.c-icon,
+.ser-overlay .btn-custom,
+.filter-btn.active,
+.filter-btn:hover,
+.proj-content h5,
+.team-det h6,
+.team-det a:hover,
+.support-box .btn-custom,
+.price .nav-pills li,
+.price-item h3 span,
+.pack-info h4 i,
+.client-detail h5,
+.client2-detail h5,
+.blog-content h5:hover a,
+.blog-meta a:hover,
+.talk-us .btn-custom,
+.quick-link li a:hover,
+.foot-bottom a,
+.features-box i,
+.panel-link.collapsed::after,
+.member-detail h3,
+.edu h4,
+.w-slide-content h5,
+.widget-meta a:hover,
+.widget-archie a:hover,
+.det-meta a:hover,
+.box-letter::first-letter,
+.aut-social a:hover,
+.comm-content span,
+.reply:hover,
+.price-item.active .btn-custom,
+.project-box h5,
+.con-info i{
+  color: #0c65ed;
+}
+.slide-content .btn-custom:hover,
+.slide-content .btn-custom.active {
+  background-color: #0c65ed;
+  border-color: #0c65ed;
+}
+.abt-info .btn-custom,
+.service-theme-2 .ser-overlay .btn-custom,
+.price .nav-pills,
+.price-item.active .btn-custom,
+.percentage,
+.comment-form .form-control:hover,
+.comment-form .form-control:focus {
+    border-color: #0c65ed;
+}
+.dropdown{
+    border-top-color: #0c65ed;
+}
+.blog-detail blockquote{
+    border-left-color:#0c65ed;
+}
+.m-detail-img,
+.search-form .form-control{
+    border-bottom-color: #0c65ed;
+  }
+.port-theme-2 .proj-content,
+.port-theme-2 .project:hover .proj-content,
+.gallery-overlay{
+    background-color: rgba(12, 101, 237, .8);
+}
+/* .strength,
+.counter-theme-2,
+.team,
+section.bg-dull,
+.bg-dull,
+.services,
+.blog,
+.panel .collapsed,
+.tag{
+   background-color: rgba(12, 101, 237, .03);
+} */
+
+@media (max-width: 576px){
+    .price .nav-pills li a {
+        border-color:#0c65ed !important;
+    }
+}
